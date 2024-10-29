@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.math.*;
 import java.text.*;
+import java.util.Vector;
 
 /**
  * Hello world!
@@ -17,14 +18,13 @@ public class App {
         return item + (item*vat);
     }
 
-
-
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
         String item;
         boolean asked = false;
         String answer;
         double itemPrice = 0, itemPriceTotal = 0, itemVAT;
+        Vector<Integer> itemVec = new Vector<Integer>(10);
 
         System.out.println("Hello, welcome to my sales applicatiion.");
 
