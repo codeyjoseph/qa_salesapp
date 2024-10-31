@@ -69,6 +69,8 @@ public class App {
         ICustomPrompt fp = new FunnyPrompt();
         IElementReader dr = new DoubleReader(fp);
         Runner rnr = new Runner(dr);
-        rnr.run();
+        Scanner sc = new Scanner(System.in);
+        rnr.run(sc);
+        sc.close();
     }
 }

@@ -2,6 +2,7 @@ package org.lbg.c4;
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class Runner {
     private IElementReader dr;
@@ -9,7 +10,7 @@ public class Runner {
         this.dr = dr;
     }
 
-    public void run() {
+    public void run(Scanner sc) {
         double VAT;
         int quantity;
         double price;
@@ -20,17 +21,17 @@ public class Runner {
         while (true) {
             try {
                 dr.setPrpt("Please enter a number up to two decimal places");
-                if (exit(VAT = dr.readFromKeyboard(System.in))
-                    || exit(price = dr.readFromKeyboard(System.in)))
+                if (exit(VAT = dr.readFromKeyboard(sc))
+                    || exit(price = dr.readFromKeyboard(sc)))
                     break ;
                 dr.setPrpt("Please enter a whole number");
                 double temp;
-                if (exit(temp = dr.readFromKeyboard(System.in)))
+                if (exit(temp = dr.readFromKeyboard(sc)))
                     break ;
                 quantity = (int) temp;
             } catch (NoSuchElementException e) {
-                System.out.println("Invalid format; breaking");
-                break;
+                System.out.println("Invalid format; throwing exception");
+                throw e;
             }
             TaxData data = new TaxData(VAT, price, quantity);
             entries.add(data);

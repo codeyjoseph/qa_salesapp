@@ -10,11 +10,9 @@ public class DoubleReader extends MsgReader implements IElementReader {
     }
 
     @Override
-    public Double readFromKeyboard(InputStream is) {
-        Scanner sc = new Scanner(is);
+    public Double readFromKeyboard(Scanner sc) {
         itsPrompt.prompt(prpt);
-        Double dub = sc.nextDouble();
-        return dub;
+        return sc.nextDouble();
     }
     public void setPrpt(String prpt) {
         this.prpt = prpt;
