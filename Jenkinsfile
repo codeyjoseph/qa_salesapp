@@ -8,14 +8,19 @@ pipeline {
   stages {
   	stage("Docker Image Build") {
 		steps {
-			dockerImage = docker.build(registry)
+			script {
+				dockerImage = docker.build(registry)
+			}
 		}
 	}
 	stage("Push to docker hub") {
 		steps {
-			docker.withRegistry('', registryCredentials) {
-				dockerImage.push("${env.BUILD_NUMBER}")
-				dockerImage.push("latest-salesapp")
+			script {
+				docker.withRegistry('', registryCredentials) {
+					dockerImage.push("${env.BUILD_NUMBER}")
+					dockerImage.push("latest-salesapp")
+					}
+				}
 			}
 		}
 	}
@@ -26,5 +31,4 @@ pipeline {
 			}
 		}
 	}
-  }
 }
