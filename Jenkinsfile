@@ -19,7 +19,6 @@ pipeline {
 				docker.withRegistry('', registryCredentials) {
 					dockerImage.push("${env.BUILD_NUMBER}")
 					dockerImage.push("latest-salesapp")
-					}
 				}
 			}
 		}
@@ -30,5 +29,6 @@ pipeline {
 				sh 'docker image prune --all --force --filer "until=48h"'
 			}
 		}
+	}
 	}
 }
