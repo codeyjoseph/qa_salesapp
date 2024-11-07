@@ -31,7 +31,7 @@ public class Runner {
                 quantity = (int) temp;
             } catch (NoSuchElementException e) {
                 System.out.println("Invalid format; throwing exception");
-                throw e;
+                break ;
             }
             TaxData data = new TaxData(VAT, price, quantity);
             entries.add(data);
