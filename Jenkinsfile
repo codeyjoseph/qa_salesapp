@@ -26,7 +26,7 @@ pipeline {
 	stage("Clean up") {
 		steps {
 			script {
-				sh 'docker image prune --all --force --filer "until=48h"'
+				sh 'docker image prune --all --force --filler "until=48h"'
 			}
 		}
 	}
